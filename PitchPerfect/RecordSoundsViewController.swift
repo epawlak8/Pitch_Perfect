@@ -3,6 +3,7 @@
 //  PitchPerfect
 //
 //  Created by Evan Pawlak on 2018-01-03.
+//  Assisted by Udacity course material
 //  Copyright © 2018 Forepeak Solutions. All rights reserved.
 //
 
