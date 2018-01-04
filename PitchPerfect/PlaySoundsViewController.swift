@@ -11,6 +11,8 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
     
+    // Outlets for all buttons in view
+    
     @IBOutlet weak var snailButton: UIButton!
     @IBOutlet weak var chipmunkButton: UIButton!
     @IBOutlet weak var rabbitButton: UIButton!
@@ -19,17 +21,20 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var reverbButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     
+    // Recieving recorded audio from previous view
     var recordedAudioURL:URL!
     var audioFile:AVAudioFile!
     var audioEngine:AVAudioEngine!
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: Timer!
     
+    // Sets effects of various buttons based on tag
     enum ButtonType: Int {
         case slow = 0, fast = 1, chipmunk = 2, vader = 3, echo = 4, reverb = 5
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        // Adjust view content mode to scaleAspectFit for dsifferent screens
         super.viewDidAppear(animated)
         snailButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         chipmunkButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
@@ -41,7 +46,9 @@ class PlaySoundsViewController: UIViewController {
         print ("viewDidAppear called")
     }
     
+    
     @IBAction func playSoundForButton(_ sender: UIButton) {
+        // Effect's placed on sound and then sound played
         print("Play Sound Button Pressed")
         switch(ButtonType(rawValue: sender.tag)!) {
         case .slow:
@@ -67,10 +74,10 @@ class PlaySoundsViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        // Setup Audio when view loads
         super.viewDidLoad()
         setupAudio()
 
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
