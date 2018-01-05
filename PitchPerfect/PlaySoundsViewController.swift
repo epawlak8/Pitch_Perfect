@@ -3,6 +3,7 @@
 //  PitchPerfect
 //
 //  Created by Evan Pawlak on 2018-01-03.
+//  Assisted by Udacity course material
 //  Copyright © 2018 Forepeak Solutions. All rights reserved.
 //
 
@@ -31,19 +32,6 @@ class PlaySoundsViewController: UIViewController {
     // Sets effects of various buttons based on tag
     enum ButtonType: Int {
         case slow = 0, fast = 1, chipmunk = 2, vader = 3, echo = 4, reverb = 5
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        // Adjust view content mode to scaleAspectFit for dsifferent screens
-        super.viewDidAppear(animated)
-        snailButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        chipmunkButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        rabbitButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        vaderButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        echoButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        reverbButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        stopButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        print ("viewDidAppear called")
     }
     
     
@@ -77,10 +65,16 @@ class PlaySoundsViewController: UIViewController {
         // Setup Audio when view loads
         super.viewDidLoad()
         setupAudio()
+        let arrayOfButtons = [snailButton, chipmunkButton, rabbitButton, vaderButton, echoButton, reverbButton]
+        
+        for button in arrayOfButtons {
+            button?.imageView?.contentMode = .scaleAspectFit
+        }
 
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureUI(.notPlaying)
     }
 

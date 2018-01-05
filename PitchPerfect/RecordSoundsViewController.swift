@@ -42,11 +42,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         // Adjust view content mode to scaleAspectFit for dsifferent screens
         super.viewDidAppear(animated)
